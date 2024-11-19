@@ -4,14 +4,16 @@ public class MarsRover {
 
     private Orientation direction;
     private int yLocation;
+    private int xLocation;
 
     public MarsRover(){
         direction = new NorthOrientation();
         yLocation = 0;
+        xLocation = 0;
     }
 
     public String showStatus() {
-        return "0:" + yLocation + ":" + direction.getDirection();
+        return xLocation + ":" + yLocation + ":" + direction.getDirection();
     }
 
     public String executeCommand(String command) {
@@ -24,9 +26,11 @@ public class MarsRover {
                 yLocation += 1;
             } else if (direction instanceof SouthOrientation) {
                 yLocation -= 1;
+            } else if (direction instanceof EastOrientation) {
+                 xLocation += 1;
             }
         }
 
-        return "0:" + yLocation + ":" + direction.getDirection();
+        return xLocation + ":" + yLocation + ":" + direction.getDirection();
     }
 }
