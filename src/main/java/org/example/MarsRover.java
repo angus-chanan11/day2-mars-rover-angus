@@ -2,39 +2,23 @@ package org.example;
 
 public class MarsRover {
 
-    private String direction;
+    private Orientation direction;
 
     public MarsRover(){
-        direction = "N";
+        direction = new NorthOrientation();
     }
 
     public String showStatus() {
-        return "0:0:" + direction;
+        return "0:0:" + direction.getDirection();
     }
 
     public String executeCommand(String command) {
         if (command.equals("L")) {
-            if (direction.equals("N")) {
-                direction = "W";
-            } else if (direction.equals("W")) {
-                direction = "S";
-            } else if (direction.equals("S")) {
-                direction = "E";
-            } else if (direction.equals("E")) {
-                direction = "N";
-            }
+            direction = direction.turnLeft();
         } else if (command.equals("R")) {
-            if (direction.equals("N")) {
-                direction = "E";
-            } else if (direction.equals("E")){
-                direction = "S";
-            } else if (direction.equals("S")){
-                direction = "W";
-            } else if (direction.equals("W")){
-                direction = "N";
-            }
+            direction = direction.turnRight();
         }
 
-        return "0:0:" + direction;
+        return "0:0:" + direction.getDirection();
     }
 }
