@@ -20,7 +20,11 @@ public class MarsRover {
         } else if (command.equals("R")) {
             direction = direction.turnRight();
         } else if (command.equals("M")) {
-            yLocation += 1;
+            if (direction instanceof NorthOrientation) {
+                yLocation += 1;
+            } else if (direction instanceof SouthOrientation) {
+                yLocation -= 1;
+            }
         }
 
         return "0:" + yLocation + ":" + direction.getDirection();
