@@ -31,6 +31,10 @@ public class MarsRover {
             } else if (direction instanceof WestOrientation) {
                 xLocation -= 1;
             }
+        } else if (command.equals("B")) {
+            if (direction instanceof NorthOrientation) {
+                yLocation -= 1;
+            }
         }
 
         return xLocation + ":" + yLocation + ":" + direction.getDirection();
