@@ -36,6 +36,8 @@ public class MarsRover {
                 yLocation -= 1;
             } else if (direction instanceof SouthOrientation) {
                 yLocation += 1;
+            }else if (direction instanceof EastOrientation) {
+                xLocation -= 1;
             }
         }
 
