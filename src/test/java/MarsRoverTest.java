@@ -99,4 +99,18 @@ public class MarsRoverTest {
         assertEquals("0:0:W", response);
         assertEquals("0:0:W", report);
     }
+
+    @Test
+    public void should_face_north_when_orient_west_and_turn_right() {
+        MarsRover rover = new MarsRover();
+        rover.executeCommand("R");
+        rover.executeCommand("R");
+        rover.executeCommand("R");
+
+        String response = rover.executeCommand("R");
+        String report = rover.showStatus();
+
+        assertEquals("0:0:N", response);
+        assertEquals("0:0:N", report);
+    }
 }
