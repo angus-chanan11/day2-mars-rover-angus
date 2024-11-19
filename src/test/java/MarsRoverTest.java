@@ -172,4 +172,17 @@ public class MarsRoverTest {
         assertEquals("0:-1:N", response);
         assertEquals("0:-1:N", report);
     }
+
+    @Test
+    public void should_y_location_increase_by_1_when_orient_south_and_move_back() {
+        MarsRover rover = new MarsRover();
+        rover.executeCommand("L");
+        rover.executeCommand("L");
+
+        String response = rover.executeCommand("B");
+        String report = rover.showStatus();
+
+        assertEquals("0:1:S", response);
+        assertEquals("0:1:S", report);
+    }
 }
