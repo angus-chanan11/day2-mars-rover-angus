@@ -26,6 +26,8 @@ public class MarsRover {
         } else if (command.equals("R")) {
             if (direction.equals("N")) {
                 direction = "E";
+            } else if (direction.equals("E")){
+                direction = "S";
             }
         }
 
