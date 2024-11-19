@@ -45,4 +45,11 @@ public class MarsRover {
 
         return xLocation + ":" + yLocation + ":" + direction.getDirection();
     }
+
+    public String executeCommands(String commands) {
+        commands.chars()
+                .mapToObj(c -> String.valueOf((char) c))
+                .forEach(this::executeCommand);
+        return xLocation + ":" + yLocation + ":" + direction.getDirection();
+    }
 }

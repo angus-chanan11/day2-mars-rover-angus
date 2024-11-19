@@ -209,4 +209,15 @@ public class MarsRoverTest {
         assertEquals("1:0:W", response);
         assertEquals("1:0:W", report);
     }
+
+    @Test
+    public void should_location_and_direction_change_when_execute_commands() {
+        MarsRover rover = new MarsRover();
+
+        String response = rover.executeCommands("MLMRMR");
+        String report = rover.showStatus();
+
+        assertEquals("-1:2:E", response);
+        assertEquals("-1:2:E", report);
+    }
 }
