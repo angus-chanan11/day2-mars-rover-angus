@@ -4,6 +4,7 @@ public class MarsRover {
 
     public static final String SEPARATOR = ":";
     public static final int MOVE_STEP_SIZE = 1;
+    public static final int MOVE_BACKWARD_STEP_SIZE = 1;
     private Orientation direction;
     private int yLocation;
     private int xLocation;
@@ -35,13 +36,13 @@ public class MarsRover {
             }
         } else if (command.equals("B")) {
             if (direction instanceof NorthOrientation) {
-                yLocation -= 1;
+                yLocation -= MOVE_BACKWARD_STEP_SIZE;
             } else if (direction instanceof SouthOrientation) {
-                yLocation += 1;
+                yLocation += MOVE_BACKWARD_STEP_SIZE;
             }else if (direction instanceof EastOrientation) {
-                xLocation -= 1;
+                xLocation -= MOVE_BACKWARD_STEP_SIZE;
             } else if (direction instanceof WestOrientation) {
-                xLocation += 1;
+                xLocation += MOVE_BACKWARD_STEP_SIZE;
             }
         }
 
