@@ -15,4 +15,14 @@ public class WestOrientation implements Orientation{
     public String getDirection() {
         return "W";
     }
+
+    @Override
+    public void moveForward(Coordinate coordinate) {
+        coordinate.setX(coordinate.getX() - MOVE_STEP_SIZE);
+    }
+
+    @Override
+    public void moveBackward(Coordinate coordinate) {
+        coordinate.setX(coordinate.getX() + MOVE_BACKWARD_STEP_SIZE);
+    }
 }

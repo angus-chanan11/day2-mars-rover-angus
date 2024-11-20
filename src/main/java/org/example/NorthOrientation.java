@@ -15,4 +15,14 @@ public class NorthOrientation implements Orientation {
     public String getDirection() {
         return "N";
     }
+
+    @Override
+    public void moveForward(Coordinate coordinate) {
+        coordinate.setY(coordinate.getY() + MOVE_STEP_SIZE);
+    }
+
+    @Override
+    public void moveBackward(Coordinate coordinate) {
+        coordinate.setY(coordinate.getY() - MOVE_BACKWARD_STEP_SIZE);
+    }
 }

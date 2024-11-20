@@ -3,18 +3,12 @@ package org.example;
 public class MarsRover {
 
     public static final String SEPARATOR = ":";
-    public static final int MOVE_STEP_SIZE = 1;
-    public static final int MOVE_BACKWARD_STEP_SIZE = 1;
     private Orientation direction;
     private Coordinate coordinate;
-    private int yLocation;
-    private int xLocation;
 
     public MarsRover(){
         direction = new NorthOrientation();
         coordinate = new Coordinate(0, 0);
-        yLocation = 0;
-        xLocation = 0;
     }
 
     public String showStatus() {
@@ -28,25 +22,9 @@ public class MarsRover {
         } else if (convertedCommand.equals(Command.R)) {
             direction = direction.turnRight();
         } else if (convertedCommand.equals(Command.M)) {
-            if (direction instanceof NorthOrientation) {
-                coordinate.setY(coordinate.getY() + MOVE_STEP_SIZE);
-            } else if (direction instanceof SouthOrientation) {
-                coordinate.setY(coordinate.getY() - MOVE_STEP_SIZE);
-            } else if (direction instanceof EastOrientation) {
-                coordinate.setX(coordinate.getX() + MOVE_STEP_SIZE);
-            } else if (direction instanceof WestOrientation) {
-                coordinate.setX(coordinate.getX() - MOVE_STEP_SIZE);
-            }
+            direction.moveForward(coordinate);
         } else if (convertedCommand.equals(Command.B)) {
-            if (direction instanceof NorthOrientation) {
-                coordinate.setY(coordinate.getY() - MOVE_STEP_SIZE);
-            } else if (direction instanceof SouthOrientation) {
-                coordinate.setY(coordinate.getY() + MOVE_STEP_SIZE);
-            } else if (direction instanceof EastOrientation) {
-                coordinate.setX(coordinate.getX() - MOVE_STEP_SIZE);
-            } else if (direction instanceof WestOrientation) {
-                coordinate.setX(coordinate.getX() + MOVE_STEP_SIZE);
-            }
+            direction.moveBackward(coordinate);
         }
 
         return showStatus();
