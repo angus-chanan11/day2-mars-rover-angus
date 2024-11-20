@@ -20,11 +20,12 @@ public class MarsRover {
     }
 
     public String executeCommand(String command) {
-        if (command.equals("L")) {
+        Command convertedCommand = Command.commandFromString(command);
+        if (convertedCommand.equals(Command.L)) {
             direction = direction.turnLeft();
-        } else if (command.equals("R")) {
+        } else if (convertedCommand.equals(Command.R)) {
             direction = direction.turnRight();
-        } else if (command.equals("M")) {
+        } else if (convertedCommand.equals(Command.M)) {
             if (direction instanceof NorthOrientation) {
                 yLocation += MOVE_STEP_SIZE;
             } else if (direction instanceof SouthOrientation) {
@@ -34,7 +35,7 @@ public class MarsRover {
             } else if (direction instanceof WestOrientation) {
                 xLocation -= MOVE_STEP_SIZE;
             }
-        } else if (command.equals("B")) {
+        } else if (convertedCommand.equals(Command.B)) {
             if (direction instanceof NorthOrientation) {
                 yLocation -= MOVE_BACKWARD_STEP_SIZE;
             } else if (direction instanceof SouthOrientation) {
