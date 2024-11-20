@@ -6,17 +6,19 @@ public class MarsRover {
     public static final int MOVE_STEP_SIZE = 1;
     public static final int MOVE_BACKWARD_STEP_SIZE = 1;
     private Orientation direction;
+    private Coordinate coordinate;
     private int yLocation;
     private int xLocation;
 
     public MarsRover(){
         direction = new NorthOrientation();
+        coordinate = new Coordinate(0, 0);
         yLocation = 0;
         xLocation = 0;
     }
 
     public String showStatus() {
-        return String.format("%d%s%d%s%s", xLocation, SEPARATOR, yLocation, SEPARATOR, direction.getDirection());
+        return String.format("%d%s%d%s%s", coordinate.getX(), SEPARATOR, coordinate.getY(), SEPARATOR, direction.getDirection());
     }
 
     public String executeCommand(String command) {
@@ -27,23 +29,23 @@ public class MarsRover {
             direction = direction.turnRight();
         } else if (convertedCommand.equals(Command.M)) {
             if (direction instanceof NorthOrientation) {
-                yLocation += MOVE_STEP_SIZE;
+                coordinate.setY(coordinate.getY() + MOVE_STEP_SIZE);
             } else if (direction instanceof SouthOrientation) {
-                yLocation -= MOVE_STEP_SIZE;
+                coordinate.setY(coordinate.getY() - MOVE_STEP_SIZE);
             } else if (direction instanceof EastOrientation) {
-                 xLocation += MOVE_STEP_SIZE;
+                coordinate.setX(coordinate.getX() + MOVE_STEP_SIZE);
             } else if (direction instanceof WestOrientation) {
-                xLocation -= MOVE_STEP_SIZE;
+                coordinate.setX(coordinate.getX() - MOVE_STEP_SIZE);
             }
         } else if (convertedCommand.equals(Command.B)) {
             if (direction instanceof NorthOrientation) {
-                yLocation -= MOVE_BACKWARD_STEP_SIZE;
+                coordinate.setY(coordinate.getY() - MOVE_STEP_SIZE);
             } else if (direction instanceof SouthOrientation) {
-                yLocation += MOVE_BACKWARD_STEP_SIZE;
-            }else if (direction instanceof EastOrientation) {
-                xLocation -= MOVE_BACKWARD_STEP_SIZE;
+                coordinate.setY(coordinate.getY() + MOVE_STEP_SIZE);
+            } else if (direction instanceof EastOrientation) {
+                coordinate.setX(coordinate.getX() - MOVE_STEP_SIZE);
             } else if (direction instanceof WestOrientation) {
-                xLocation += MOVE_BACKWARD_STEP_SIZE;
+                coordinate.setX(coordinate.getX() + MOVE_STEP_SIZE);
             }
         }
 
