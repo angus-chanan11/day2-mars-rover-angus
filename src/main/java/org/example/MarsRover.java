@@ -16,7 +16,7 @@ public class MarsRover {
     }
 
     public String showStatus() {
-        return xLocation + SEPARATOR + yLocation + SEPARATOR + direction.getDirection();
+        return String.format("%d%s%d%s%s", xLocation, SEPARATOR, yLocation, SEPARATOR, direction.getDirection());
     }
 
     public String executeCommand(String command) {
