@@ -2,6 +2,7 @@ package org.example;
 
 public class MarsRover {
 
+    public static final String SEPARATOR = ":";
     private Orientation direction;
     private int yLocation;
     private int xLocation;
@@ -13,7 +14,7 @@ public class MarsRover {
     }
 
     public String showStatus() {
-        return xLocation + ":" + yLocation + ":" + direction.getDirection();
+        return xLocation + SEPARATOR + yLocation + SEPARATOR + direction.getDirection();
     }
 
     public String executeCommand(String command) {
